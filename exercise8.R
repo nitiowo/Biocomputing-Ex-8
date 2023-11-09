@@ -2,9 +2,15 @@
 ##Start in working directory containing iris.csv file before running this script!
 #1) Write R code that replicates functionality of head function in bash. 
 ## code should... 
-### define a variable with the file to return lines from 
+### define a variable with the file to return lines from
+##alter read.table function arguments to match the file being read from
+data=read.table("iris.csv", header=TRUE, sep=",")
 ### define a variable representing # of lines to be returned from top of indicated file
+####change the number that headlines holds to match # of lines you want
+toplines<-8
 ### print selected file content to terminal in R
+filetop=data[1:toplines,]
+filetop
 ### not use head function in R
 ### use square bracket indexing to subset the tabular file!
 
