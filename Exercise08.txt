@@ -1,0 +1,46 @@
+# Exercise 08 
+# 2023-11-04
+
+# write R code that replicates the functionality of the head function we used in bash. Your 
+# code should define a variable with the file to return lines from and a variable representing 
+# number of lines to be returned from the top of the indicated file. The selected file content 
+# should be printed to the terminal in R. Do not use the head function in R. Be sure you are 
+# using square bracket indexing to subset the tabular file. 
+
+# create a data frame that contains tree species name and their relative abundance 
+names <- c("Acer","Populous","Betula","Fraxinus")
+sppAbundance <- c(182, 121, 33, 17)
+woodDensity <- c(0.62, 0.26, 0.33, 0.41)
+df <- data.frame(names, sppAbundance, woodDensity, stringsAsFactors = FALSE)
+
+# I would like to see first and fourth row and first, second and third column of the dataframe
+subset <- df[c(1,4),c(1,2,3)]
+print(subset)
+
+# set working directory 
+setwd("C:\\Users\\debit\\Downloads\\Stem decay project")
+
+# read iris.csv data set
+iris <- read.csv("iris.csv")
+
+# print the last two rows and last two columes to the R terminal 
+print(iris[c(149:150),c(4,5)])
+
+# get the number of observations for each species included in the data set
+setosaNum <- nrow(subset(iris, Species == "setosa"))
+versicolorNum <- nrow(subset(iris, Species == "versicolor"))
+VerginicaNum <- nrow(subset(iris, Species == "virginica"))
+
+# get rows with Sepal.Width > 3.5 
+sepalwidth <- iris[iris$Sepal.Width > 3.5, ]
+
+# write the data for the species setosa for a comma-delimited file names 'setosa.csv'
+setosa <- iris[iris$Species == "setosa", ]
+write.csv(setosa, "setosa.csv", row.names=FALSE)
+
+# calculate the mean, minimum and maximum of Petal.Length for observations from virginica 
+verginica <- iris[iris$Species == "virginica", ]
+mean <-  mean(verginica$Petal.Length)
+minimum <- min(verginica$Petal.Length)
+maximum <- max(verginica$Petal.Length)
+
