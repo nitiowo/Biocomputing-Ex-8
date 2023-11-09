@@ -1,5 +1,3 @@
-library(ggplot2)
-library(cowplot)
 
 iris <- read.csv("~/Desktop/Biocomputing/Exercise 8/iris.csv", header = TRUE, stringsAsFactors = FALSE)
 
