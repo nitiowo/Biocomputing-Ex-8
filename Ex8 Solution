@@ -1,0 +1,37 @@
+#Solution 1
+file_path <- "file_path_here"  # Use the name of your actual file
+num_lines <- 10  # Number of lines to display
+
+file_content <- readLines(file_path)
+
+if (length(file_content) > 0) {
+  top_lines <- file_content[1:min(num_lines, length(file_content))]
+  cat(paste(top_lines, collapse = "\n"))}
+
+#Solution 2
+# Load data from the 'iris.csv'
+iris_data <- read.csv("iris.csv")
+
+# Print the last 2 rows in the last 2 columns
+print(iris_data[nrow(iris_data)-1:nrow(iris_data), ncol(iris_data)-1:ncol(iris_data)])
+
+# Get # of observations for each species
+table(iris_data$Species)
+
+# Get rows with Sepal.Width > 3.5
+sepal_width_gt_3.5 <- iris_data[iris_data$Sepal.Width > 3.5, ]
+
+# Write the data for the species setosa to a comma-delimited file named 'setosa.csv'
+setosa_data <- subset(iris_data, Species == "setosa")
+write.csv(setosa_data, file = "setosa.csv", row.names = FALSE)
+
+# Calculate the mean, minimum, and maximum of Petal.Length for observations from virginica
+virginica_data <- subset(iris_data, Species == "virginica")
+virginica_petal_length <- virginica_data$Petal.Length
+mean_virginica <- mean(virginica_petal_length)
+min_virginica <- min(virginica_petal_length)
+max_virginica <- max(virginica_petal_length)
+
+c(mean_virginica, min_virginica, max_virginica)
+
+#Stephan Lukashev
